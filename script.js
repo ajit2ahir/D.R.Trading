@@ -4,172 +4,130 @@ window.addEventListener('load', () => {
   const slider = document.querySelector('.slider');
   const images = document.querySelectorAll('.image');
   const bottom = document.querySelector('.bottom');
+  const frame = document.querySelector('.frame');
 
-  let slideNumber = 1;
+  let slideNumber = 0;
   const length = images.length;
 
-  // ✅ detect actual width (if fails, use fallback 1025)
-  let slideWidth = images[0].clientWidth || 1025;
+  /* ✅ ALWAYS use frame width (mobile safe) */
+  let slideWidth = frame.clientWidth;
 
-  // ✅ update width on resize (to keep consistent)
-  window.addEventListener('resize', () => {
-    slideWidth = images[0].clientWidth || 1025;
-  });
+  const updateWidth = () => {
+    slideWidth = frame.clientWidth;
+    slider.style.transform = `translateX(-${slideNumber * slideWidth}px)`;
+  };
 
-  // ===== DOT BUTTONS =====
+  window.addEventListener('resize', updateWidth);
+
+  /* ===== DOT BUTTONS ===== */
   for (let i = 0; i < length; i++) {
-    const div = document.createElement('div');
-    div.className = 'button';
-    bottom.appendChild(div);
+    const dot = document.createElement('div');
+    dot.className = 'button';
+    bottom.appendChild(dot);
   }
 
   const buttons = document.querySelectorAll('.button');
-  buttons[0].style.backgroundColor = '#A0522D';
 
-  const resetbg = () => {
-    buttons.forEach((button) => {
-      button.style.backgroundColor = 'transparent';
-      button.addEventListener('mouseover', stopslideshow);
-      button.addEventListener('mouseout', startslideshow);
-    });
+  const updateDots = () => {
+    buttons.forEach(btn => btn.style.backgroundColor = 'transparent');
+    buttons[slideNumber].style.backgroundColor = '#A0522D';
   };
 
-  buttons.forEach((button, i) => {
-    button.addEventListener('click', () => {
-      resetbg();
-      slider.style.transform = `translateX(-${i * slideWidth}px)`;
-      slideNumber = i + 1;
-      button.style.backgroundColor = '#A0522D';
+  buttons.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      slideNumber = i;
+      slider.style.transform = `translateX(-${slideWidth * slideNumber}px)`;
+      updateDots();
     });
   });
 
-  const changecolor = () => {
-    resetbg();
-    buttons[slideNumber - 1].style.backgroundColor = '#A0522D';
+  updateDots();
+
+  /* ===== SLIDE CONTROL ===== */
+  const nextSlide = () => {
+    slideNumber = (slideNumber + 1) % length;
+    slider.style.transform = `translateX(-${slideWidth * slideNumber}px)`;
+    updateDots();
   };
 
-  // ===== SLIDE MOVEMENTS =====
-  const nextslide = () => {
-    slider.style.transform = `translateX(-${slideNumber * slideWidth}px)`;
-    slideNumber++;
-  };
-  const prevslide = () => {
-    slider.style.transform = `translateX(-${(slideNumber - 2) * slideWidth}px)`;
-    slideNumber--;
-  };
-  const getfirstslide = () => {
-    slider.style.transform = `translateX(0px)`;
-    slideNumber = 1;
-  };
-  const getlastslide = () => {
-    slider.style.transform = `translateX(-${(length - 1) * slideWidth}px)`;
-    slideNumber = length;
+  const prevSlide = () => {
+    slideNumber = (slideNumber - 1 + length) % length;
+    slider.style.transform = `translateX(-${slideWidth * slideNumber}px)`;
+    updateDots();
   };
 
-  right.addEventListener('click', () => {
-    slideNumber < length ? nextslide() : getfirstslide();
-    changecolor();
-  });
-  left.addEventListener('click', () => {
-    slideNumber > 1 ? prevslide() : getlastslide();
-    changecolor();
-  });
+  right.addEventListener('click', nextSlide);
+  left.addEventListener('click', prevSlide);
 
-  // ===== AUTO SLIDE =====
-  let slideinterval;
-  const startslideshow = () => {
-    slideinterval = setInterval(() => {
-      slideNumber < length ? nextslide() : getfirstslide();
-      changecolor();
-    }, 2500);
-  };
+  /* ===== AUTO SLIDE ===== */
+  let interval = setInterval(nextSlide, 2500);
 
-  const stopslideshow = () => {
-    clearInterval(slideinterval);
-  };
+  const stopAuto = () => clearInterval(interval);
+  const startAuto = () => interval = setInterval(nextSlide, 2500);
 
-  startslideshow();
+  /* DESKTOP HOVER */
+  slider.addEventListener('mouseenter', stopAuto);
+  slider.addEventListener('mouseleave', startAuto);
 
-  // ===== HOVER PAUSE =====
-  slider.addEventListener('mouseover', stopslideshow);
-  slider.addEventListener('mouseout', startslideshow);
-  right.addEventListener('mouseover', stopslideshow);
-  right.addEventListener('mouseout', startslideshow);
-  left.addEventListener('mouseover', stopslideshow);
-  left.addEventListener('mouseout', startslideshow);
+  /* MOBILE TOUCH SUPPORT */
+  slider.addEventListener('touchstart', stopAuto);
+  slider.addEventListener('touchend', startAuto);
 });
 
 
 
-
-
-
-/* =========================
-   PRODUCT SCROLL ANIMATION
-========================= */
+/* ================= PRODUCT ANIMATION ================= */
 
 const productSection = document.querySelector('#products');
 const productCards = document.querySelectorAll('.product-card');
 
-const observer = new IntersectionObserver(
-  (entries) => {
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        productCards.forEach(card => {
-          card.classList.add('show');
-        });
-        observer.unobserve(productSection); // run only once
+        productCards.forEach(card => card.classList.add('show'));
+        observer.disconnect();
       }
     });
-  },
-  { threshold: 0.25 } // triggers when 25% visible
-);
+  }, { threshold: 0.25 });
 
-observer.observe(productSection);
-
-/* =========================
-   PRODUCT DESCRIPTION TOGGLE
-========================= */
-
-function toggleDesc(img) {
-  const card = img.closest('.product-card');
-  const desc = card.querySelector('.product-desc');
-
-  document.querySelectorAll('.product-card').forEach(c => {
-    if (c !== card) {
-      c.classList.remove('active');
-      c.querySelector('.product-desc').style.display = "none";
-    }
-  });
-
-  if (card.classList.contains('active')) {
-    card.classList.remove('active');
-    desc.style.display = "none";
-  } else {
-    card.classList.add('active');
-    desc.style.display = "block";
-  }
+  observer.observe(productSection);
+} else {
+  /* Fallback for old mobiles */
+  productCards.forEach(card => card.classList.add('show'));
 }
 
 
 
+/* ================= PRODUCT TOGGLE (MOBILE SAFE) ================= */
+
+function toggleDesc(img) {
+  const card = img.closest('.product-card');
+
+  document.querySelectorAll('.product-card').forEach(c => {
+    if (c !== card) c.classList.remove('active');
+  });
+
+  card.classList.toggle('active');
+}
 
 
-/* ================= CONTACT SECTION SCROLL ANIMATION ================= */
 
+/* ================= CONTACT SECTION ANIMATION ================= */
 
-// CONTACT SECTION SCROLL ANIMATION
 const contactSection = document.querySelector('.contact-section');
 
-const contactObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      contactSection.classList.add('active');
-      contactObserver.unobserve(contactSection);
-    }
-  });
-}, {
-  threshold: 0.35
-});
+if ('IntersectionObserver' in window) {
+  const contactObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        contactSection.classList.add('active');
+        contactObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
 
-contactObserver.observe(contactSection);
+  contactObserver.observe(contactSection);
+} else {
+  contactSection.classList.add('active');
+}
