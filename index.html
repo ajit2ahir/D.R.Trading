@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+  <title>DR Trading</title>
+
+  <style>
+    /* ===== BASIC RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: url("WhatsApp Image 2025-10-24 at 6.23.05 PM.jpeg") center/cover no-repeat;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 1000;
+      margin-bottom: 0px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    /* ===== LOGO ===== */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 300px;
+    }
+
+    .logo img {
+      border-radius: 50%;
+      height: 60px;
+      width: auto;
+    }
+
+    .logo h1 {
+      color: #fff;
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 900;
+      font-size: 20px;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 100%;
+      background-color: gold;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.28s cubic-bezier(.2, .9, .3, 1);
+    }
+
+    nav ul li a:hover {
+      color: gold;
+    }
+
+    nav ul li a:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    main {
+  margin-top: 40px; /* keeps space for fixed header */
+  min-height: calc(100vh - 100px); /* ensures full screen height below header */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+    /* ===== SLIDER SECTION ===== */
+       .previu {
+  width: 90vw;                /* stays same */
+  background-color: #fff;     /* keep white */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: visible;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+      .top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .arrow {
+      cursor: pointer;
+      width: 60px;
+      height: 60px;
+    }
+
+    .left {
+      transform: rotate(180deg);
+    }
+
+   .frame {
+  width: 100vw;        /* same as .previu width */
+  height: 70vh;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.5);
+}
+    .slider {
+      display: flex;
+      transition: all 1s ease;
+    }
+
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    /* ===== DOT BUTTONS ===== */
+.bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background: transparent; /* keep under image */
+}
+
+.button {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #C68642;
+  cursor: pointer;
+}
+
+
+
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      margin-top:0px;
+    }
+
+    section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+    }
+
+    section p {
+      font-size: 1.1rem;
+      color: #333;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+.text-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.moving-text {
+   display: inline-block;
+  white-space: nowrap;
+  position: relative;
+  animation: moveRightToLeft 10s linear infinite;
+}
+.moving-text:hover {
+  animation-play-state: paused;
+}
+
+
+@keyframes moveRightToLeft {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+    .whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  z-index: 9999;
+}
+.whatsapp-float img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float img:hover {
+  transform: scale(1.1);
+}
+
+
+
+.products-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  align-items: flex-start; /* ⭐ IMPORTANT FIX */
+}
+
+.product-card {
+  width: 230px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+   opacity: 0;
+   transform: translateY(40px) scale(0.95);
+}
+.product-card.animate {
+  animation: floatIn 0.8s ease forwards;
+}
+.product-card.active {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(198,134,66,0.5);
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.4s ease;
+}
+
+.product-card.active img {
+  transform: scale(1.08);
+}
+
+/* description hidden by default */
+.product-desc {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 0;
+  font-size: 0.95rem;
+  color: #444;
+  transition: all 0.5s ease;
+}
+
+/* show description ONLY for active card */
+.product-card.active .product-desc {
+  max-height: 300px;
+  opacity: 1;
+  margin-top: 12px;
+}
+/* ===================== */
+/* DOPAMINE PRODUCT FX */
+/* ===================== */
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+  transition: 
+    transform 0.45s cubic-bezier(.25,.8,.25,1),
+    box-shadow 0.45s ease;
+  opacity: 0;              /* hidden initially */
+  transform: translateY(40px) scale(0.95);
+}
+
+
+/* stagger animation */
+.product-card:nth-child(1) { animation-delay: 0.1s; }
+.product-card:nth-child(2) { animation-delay: 0.2s; }
+.product-card:nth-child(3) { animation-delay: 0.3s; }
+.product-card:nth-child(4) { animation-delay: 0.4s; }
+.product-card:nth-child(5) { animation-delay: 0.5s; }
+.product-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes floatIn {
+  from {
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+.product-card.show {
+  animation: floatIn 1s ease forwards;
+}
+/* Hover lift */
+.product-card:hover {
+  transform: translateY(-12px) scale(1.04);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+/* Image animation */
+.product-card img {
+  transition: transform 0.6s ease, filter 0.4s ease;
+  margin-bottom: 6px;
+}
+
+.product-card:hover img {
+  transform: scale(1.12) rotate(-1deg);
+  filter: brightness(1.15);
+}
+
+/* Shine effect */
+.product-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.5),
+    transparent
+  );
+  transform: skewX(-20deg);
+}
+
+.product-card:hover::before {
+  animation: shine 0.9s;
+}
+
+@keyframes shine {
+  from { left: -75%; }
+  to { left: 130%; }
+}
+
+@keyframes expandDesc {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Active card glow */
+.product-card.active {
+  border: 2px solid gold;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+}
+
+
+
+
+
+
+
+
+.grading-section {
+  margin-top: 60px;
+  padding: 40px 20px;
+  background: #f5f5f5;
+  border-radius: 12px;
+}
+
+.grading-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #2e7d32;
+}
+
+.grading-container {
+  display: flex;
+  flex-direction: column; 
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+.grading-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  text-align: left;
+}
+
+.grading-card h3 {
+  color: #2e7d32;
+  margin-bottom: 8px;
+}
+.grading-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+.grading-points {
+  margin-top: 10px;
+  padding-left: 20px;
+  color: #555;
+}
+
+.grading-points li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.grading-subpoints {
+  margin-top: 8px;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.grading-subpoints li {
+  margin-bottom: 6px;
+}
+.certification-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.certification-item img {
+  width: 50px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.certification-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+@media (max-width: 600px) {
+  .certification-item {
+    align-items: flex-start;
+  }
+
+  .certification-item img {
+    width: 40px;
+  }
+}
+.size-grading {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.size-text {
+  flex: 2;
+}
+
+.size-image {
+  flex: 1;
+  text-align: right;
+}
+
+.size-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+@media (max-width: 768px) {
+  .size-grading {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .size-image {
+    text-align: center;
+  }
+}
+
+
+
+
+
+
+/* ===== ABOUT SECTION ===== */
+.about-section {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 90px 20px;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Floating glow animation */
+.about-section::before {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, gold, transparent);
+  top: -120px;
+  left: -120px;
+  animation: floatGlow 10s infinite alternate ease-in-out;
+  opacity: 0.35;
+}
+
+@keyframes floatGlow {
+  to {
+    transform: translate(500px, 350px);
+  }
+}
+
+/* Headings */
+.about-section h2 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  color: gold;
+  text-shadow: 0 0 15px rgba(255,215,0,0.6);
+}
+
+/* Mission */
+.mission-text {
+  font-style: italic;
+  font-size: 1.25rem;
+  max-width: 900px;
+  margin: 20px auto 40px;
+  color: #f5f5f5;
+}
+
+/* Intro text */
+.about-text {
+  max-width: 900px;
+  margin: 0 auto 35px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #eaeaea;
+}
+
+/* Why choose us */
+.about-points {
+  max-width: 750px;
+  margin: 0 auto 60px;
+  background: rgba(255,255,255,0.08);
+  padding: 30px;
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+}
+
+.about-points h3 {
+  color: gold;
+  margin-bottom: 20px;
+}
+
+.about-points ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-points li {
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+}
+
+/* ===== TEAM SECTION ===== */
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* Team card */
+.team-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 25px;
+  width: 260px;
+  color: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+  animation: fadeUp 1s ease forwards;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover */
+.team-card:hover {
+  transform: translateY(-15px) scale(1.06);
+  box-shadow: 0 25px 50px rgba(255,215,0,0.45);
+}
+
+.team-card h3 {
+  color: gold;
+  margin-bottom: 10px;
+}
+
+.team-card p {
+  color: white;
+  margin-bottom: 6px;
+}
+
+.team-card span {
+  font-size: 0.85rem;
+  color: #ddd;
+}
+
+/* Team note */
+.about-team-note {
+  max-width: 900px;
+  margin: auto;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #eaeaea;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .about-section h2 {
+    font-size: 2.2rem;
+  }
+}
+
+
+
+
+
+
+/* ================= CONTACT SECTION ================= */
+
+.contact-section {
+  width: 100vw;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+  color: #ffffff;
+  overflow: hidden;
+  margin-left: calc(-50vw + 50%);
+}
+
+/* TITLE */
+.contact-title {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 50px;
+  color: #fff; /* WHITE text */
+  position: relative;
+  animation: goldGlow 2.2s ease-in-out infinite alternate;
+}
+/* GOLDEN GLOW ANIMATION */
+@keyframes goldGlow {
+  0% {
+    text-shadow:
+      0 0 5px #ffd700,
+      0 0 10px #ffb700,
+      0 0 15px rgba(255, 215, 0, 0.6);
+  }
+  100% {
+    text-shadow:
+      0 0 15px #ffd700,
+      0 0 30px #ffae00,
+      0 0 45px rgba(255, 174, 0, 0.9);
+  }
+}
+
+/* WRAPPER */
+.contact-wrapper {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+/* INFO CARD */
+.contact-info {
+  flex: 1;
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  padding: 35px;
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateX(-80px) scale(0.9);
+  transition: all 1s ease;
+  color: #fff;
+}
+
+.contact-info h3 {
+  font-size: 1.9rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.contact-info p,
+.contact-details p {
+  line-height: 1.6;
+  font-size: 1.05rem;
+  color: #fff;
+}
+
+/* MAP CARD */
+.contact-map {
+  flex: 1;
+  border-radius: 18px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(80px) scale(0.9);
+  transition: all 1s ease;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  border: none;
+  filter: grayscale(20%) contrast(110%);
+}
+
+/* HOVER MAGIC */
+.contact-info:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(255,215,0,0.25);
+}
+
+.contact-map:hover iframe {
+  filter: grayscale(0%) contrast(120%);
+  transition: 0.5s;
+}
+
+/* ===== SCROLL ACTIVE ===== */
+.contact-section.active .contact-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 0.8s ease;
+}
+
+.contact-section.active .contact-info {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.contact-section.active .contact-map {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contact-wrapper {
+    flex-direction: column;
+  }
+}
+
+.contact-details p {
+  color: #fff;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.contact-details p strong {
+  color: gold;
+}
+
+
+
+
+
+
+
+/* ===== FOOTER ===== */
+.site-footer {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  padding: 60px 20px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* FOOTER COLUMN */
+.footer-col {
+  flex: 1 1 220px;
+}
+
+.footer-col h3,
+.footer-col h4 {
+  color: gold;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.footer-tagline {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #eee;
+}
+
+.footer-location {
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+/* LINKS */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: gold;
+}
+
+/* FOOTER BOTTOM */
+.footer-bottom {
+  margin-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 15px;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+/* Left corner text */
+.footer-left-text {
+  text-align: left;
+  color: #ffd700;
+}
+
+/* Centered credit */
+.footer-credit {
+  
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15px;
+}
+/* MOBILE */
+@media (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo">
+      <img src="WhatsApp Image 2025-10-14 at 5.29.00 PM.jpeg" alt="DR Trading Logo" />
+      <h1>DADUBHAI RANABHAI</h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About us</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+<a href="https://wa.me/919427753305" 
+   class="whatsapp-float" 
+   target="_blank" 
+   aria-label="Chat on WhatsApp">
+  <img src="whatsapp_logo.png" alt="WhatsApp Chat">
+</a>
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    <!-- HOME SECTION -->
+    <section id="home">
+      <div class="text-wrapper">
+      <h1 class="moving-text">Welcome to DR Trading mobile no:- 9427753305</h1>
+      </div>
+      <div class="previu">
+        <div class="top">
+          <img src="right.png" class="arrow left" alt="Previous" />
+          <div class="frame">
+            <div class="slider">
+              <img src="red onion.jpeg" class="image" alt="Red Onion" />
+              <img src="white onion.jpeg" class="image" alt="White Onion" />
+              <img src="whitd dehydrated.jpeg" class="image" alt="Dehydrated Onion" />
+<img src="garlic.png" class="image" alt="garlic" />
+<img src="dhydrated garlic.jpeg" class="image" alt="dhy Garlic" />
+            </div>
+          </div>
+          <img src="right.png" class="arrow right" alt="Next" />
+        </div><!--end top-->
+
+        <!-- BOTTOM DOT BUTTONS -->
+        <div class="bottom">
+          <!--dot area-->
+        </div>
+      </div><!--end container-->
+
+<div class="grading-section">
+  <h2>Product Grading & Quality Standards</h2>
+
+  <div class="grading-container">
+
+<div class="grading-card size-grading">
+
+  <div class="size-text">
+    <h3>Size Grading</h3>
+
+    <ol class="grading-points">
+      <li>
+        Products are carefully graded based on size, weight, and uniformity
+        to meet international market requirements.
+      </li>
+
+      <li>
+        Different sizes available:
+        <ul class="grading-subpoints">
+          <li><strong>Grade A (45mm+):</strong> For export and premium retail.</li>
+          <li><strong>Grade B (35mm–45mm):</strong> For general wholesale.</li>
+          <li><strong>Gulli / Small:</strong> For pickling or specific regional cuisines.</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <div class="size-image">
+    <img src="sizes.jpeg" alt="Onion Size Grading">
+  </div>
+
+</div>
+
+   <div class="grading-card">
+  <h3>Quality Assurance & Certification</h3>
+
+  <ol class="grading-points">
+
+    <li>
+  <strong>Licensed & Regulated</strong>
+
+  <div class="certification-item">
+    <img src="APMC.png" alt="APMC Mahuva Logo">
+    <p>
+      <strong>APMC Mahuva Registered:</strong>
+      Authorized trader under the Agricultural Produce Market Committee.
+    </p>
+  </div>
+
+  <div class="certification-item">
+    <img src="GST.png" alt="GST Logo">
+    <p>
+      <strong>GST Compliant:</strong>
+      Fully transparent billing and tax documentation.
+    </p>
+  </div>
+
+  <div class="certification-item">
+    <img src="APEDA.png" alt="APEDA Logo">
+    <p>
+      <strong>APEDA Certified:</strong>
+      Recognized by the Government of India for export-quality agricultural products.
+    </p>
+  </div>
+</li>
+
+
+    <li>
+      <strong>Our 4-Stage Quality Check</strong>
+      <ul class="grading-subpoints">
+        <li><strong>Stage 1 – Primary Sorting:</strong> Removal of mud, stones, and loose skin at the farm level.</li>
+        <li><strong>Stage 2 – Sizing (Grading):</strong> Onions are separated by size (e.g., 45mm+, 55mm+) to match specific market requirements.</li>
+        <li><strong>Stage 3 – Manual Inspection:</strong> Each onion is checked for firmness and “double-patti” (thick skin) to ensure durability during long-distance transport.</li>
+        <li><strong>Stage 4 – Ventilated Packaging:</strong> Packed in high-quality Leno mesh bags that allow airflow, preventing rot during transit.</li>
+      </ul>
+    </li>
+
+  </ol>
+</div>
+
+
+    <div class="grading-card">
+  <h3>Packaging Standards</h3>
+
+  <ol class="grading-points">
+
+    <li>
+      <strong>Retail Packs (5kg – 10kg)</strong>
+      <ul class="grading-subpoints">
+        <li><strong>Best for:</strong> Supermarkets and small retailers.</li>
+        <li><strong>Material:</strong> Premium red Leno mesh bags for high product visibility.</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Wholesale Standard (25kg – 50kg)</strong>
+      <ul class="grading-subpoints">
+        <li><strong>Best for:</strong> Mandi traders and large distributors.</li>
+        <li><strong>Material:</strong> Heavy-duty ventilated bags to prevent “sweating” during transit.</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Customized Packaging</strong>
+      <ul class="grading-subpoints">
+        <li>Packaging can be customized as per buyer requirements and destination market standards.</li>
+      </ul>
+    </li>
+
+  </ol>
+</div>
+
+    <div class="grading-card">
+      <h3>Export Compliance</h3>
+      <p>
+        All products comply with export norms and are prepared according to
+        buyer specifications and destination standards.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+    </section>
+
+   <!-- PRODUCTS SECTION -->
+    <section id="products">
+      <h2>Our Products</h2>
+      <p>
+        Explore our range of onions, garlic, and dehydrated goods sourced directly from trusted farms.
+      </p>
+   <div class="products-container">
+    <div class="product-card">
+   <img src="red onion.jpeg" alt="red onion"     onclick="toggleDesc(this)"/>
+
+   <h3>Red onion</h3>
+ <div class="product-desc">
+Featuring a vibrant purple skin and crisp white flesh, red onions offer a mild, peppery flavor that is perfect for raw applications. Their crunchy texture and striking color make them an essential garnish for salads, sandwiches, and tacos.
+  </div>
+    </div>
+     <div class="product-card">
+    <img src="white onion.jpeg" alt="white onion" onclick="toggleDesc(this)"/>
+     <h3>White onion</h3>
+<div class="product-desc">
+    Characterized by their papery white skin and snowy flesh, these onions offer a high water content and a bold, classic bite. They are exceptionally versatile, holding their shape well in cooked dishes while providing a sharp crunch when served raw.
+  </div>
+
+     </div>
+     <div class="product-card">
+     <img src="whitd dehydrated.jpeg" alt="white dhy" onclick="toggleDesc(this)"/>
+     <h3>White Dehydrated onion</h3>
+<div class="product-desc">
+Our white dehydrated onions provide consiatent flavor and crunch without the labor of pealing or chopping. perfect for high-volume cooking, they offer a concentrated savory profile that integrates seamlessly into sauces, batters, and dry rubs.
+  </div>
+     </div>
+     <div class="product-card">
+     <img src="garlic.png" alt="garlic" onclick="toggleDesc(this)"/>
+     <h3>Garlic</h3>
+<div class="product-desc">
+Renowned for its pungent aroma and deep savory complexity, garlic is the foundational heart of global cuisine. Whether roasted for a buttery sweetness or minced raw for a spicy kick it is an indispensable ingredient for elevating any savory dish.
+      </div>
+     </div>
+     <div class="product-card">
+     <img src="dhydrated garlic.jpeg" alt="dhy garlic" onclick="toggleDesc(this)"/>
+     <h3>Dehydrated Garlic</h3>
+<div class="product-desc">
+OUR dehydrated garlic offers a concentrated flavor profile that is more mellow and nutty than raw cloves, ensuring a consistent taste in every dish. it is the perfect shelf-stable  solution for creating dry rubs, seasonings, and batters where moisture control is key.
+      </div>
+     </div>
+     <div class="product-card">
+     <img src="red dehy onion.jpg" alt="dhy garlic" onclick="toggleDesc(this)"/>
+     <h3>Red Dehydrated onion</h3>
+<div class="product-desc">
+A vibrant, flavor-packed alternative to fresh onions that offers a unique balance of sweetness and sharp aroma. Perfect for garnishing and cooking alike, these dehydrated flakes provide instant color and a gourmet touch to any recipe.
+     </div>
+     </div>
+   </div>
+    </section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="about-section">
+  <h2>About Us</h2>
+
+  <!-- Mission -->
+  <p class="mission-text">
+    Our mission is to deliver premium-quality agricultural products with
+    honesty, consistency, and global standards — building long-term trust
+    with every customer we serve.
+  </p>
+
+  <!-- Company Intro -->
+  <p class="about-text">
+    <strong>D.R. Trading</strong> is a trusted agricultural trading company based in India,
+    specializing in the sourcing, grading, and global export of onions, garlic,
+    and dehydrated food products. Since our establishment, we have focused on
+    delivering consistent quality, competitive pricing, and reliable logistics
+    to domestic and international buyers.
+  </p>
+
+  <!-- Why Choose Us -->
+  <div class="about-points">
+    <h3>Why Choose D.R. Trading?</h3>
+    <ul>
+      <li>✔ APMC Mahuva registered & fully compliant</li>
+      <li>✔ APEDA certified for export-quality standards</li>
+      <li>✔ Multi-stage quality inspection process</li>
+      <li>✔ Flexible packaging & grading as per buyer needs</li>
+      <li>✔ Reliable domestic & international logistics</li>
+    </ul>
+  </div>
+
+  <!-- Team Cards -->
+  <div class="team-container">
+
+    <div class="team-card">
+      <h3>Founder</h3>
+      <p><strong>Bhabhlubhai Dadubhai Bhukan</strong></p>
+      <span>Founded on 30 June 2004</span>
+    </div>
+
+    <div class="team-card">
+      <h3>CEO</h3>
+      <p><strong>Danubhai Dadubhai Bhukan</strong></p>
+    </div>
+
+    <div class="team-card">
+      <h3>Product Manager</h3>
+      <p><strong>Rajdeep Vaghoshi</strong></p>
+    </div>
+
+    <div class="team-card">
+      <h3>Logistics Manager</h3>
+      <p><strong>Ankitbhai Bhabhlubhai Bhukan</strong></p>
+    </div>
+
+  </div>
+
+  <!-- Team Note -->
+  <p class="about-team-note">
+    Our leadership team combines decades of field experience, market knowledge,
+    and operational expertise to ensure smooth execution of every order —
+    from farm selection to final delivery.
+  </p>
+</section>
+
+
+
+    
+
+  
+<!-- CONTACT SECTION -->
+<section id="contact" class="contact-section reveal-contact">
+  <h2 class="contact-title">Contact Us</h2>
+
+  <div class="contact-wrapper">
+
+    <!-- LEFT INFO CARD -->
+    <div class="contact-info">
+      <h3>Let’s Trade Globally 🌍</h3>
+      <p>
+        Reach out to <strong>D.R. Trading</strong> for  inquiries,
+        bulk orders, or long-term partnerships.
+      </p>
+
+      <div class="contact-details">
+
+        <p>
+          <i class="fas fa-phone"></i>
+          <strong>Phone:</strong> +91 9427753305
+        </p>
+
+        <p>
+          <i class="fas fa-envelope"></i>
+          <strong>Email:</strong>
+          <a href="mailto:ahirajit10@gmail.com">drtrading@email.com</a>
+        </p>
+
+        <p>
+          <i class="fab fa-whatsapp"></i>
+          <strong>WhatsApp:</strong>
+          <a href="https://wa.me/919427753305" target="_blank">
+            +91 9427753305 - Available(24/7)
+          </a>
+        </p>
+
+        <p>
+          <i class="fas fa-clock"></i>
+          <strong>Business Hours:</strong>
+          Mon – Sat | 9:00 AM – 7:00 PM (IST)
+        </p>
+
+        <p>
+          <i class="fas fa-globe"></i>
+          <strong>International Buyers:</strong>
+          WhatsApp & Email available 24/7
+        </p>
+
+      </div>
+    </div>
+
+    <!-- RIGHT MAP CARD -->
+    <div class="contact-map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.335009343407!2d71.7569824!3d21.099206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be23b004835b9eb%3A0xf5899ca98c48bd7f!2sD.R.Trading!5e0!3m2!1sen!2sin!4v1767292776983!5m2!1sen!2sin"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+  </main>
+
+<script src="script.js"></script>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- COMPANY INFO -->
+    <div class="footer-col">
+      <h3>D.R. Trading</h3>
+      <p class="footer-tagline">
+        Trusted Agriculture product wholesaler since 2004.
+      </p>
+      <p class="footer-location">
+        📍 Mahuva, Gujarat, India
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div class="footer-col">
+      <h4>Our Products</h4>
+      <ul>
+        <li>Fresh Red & White Onions</li>
+        <li>Dehydrated Onion Products</li>
+        <li>Fresh Garlic</li>
+        <li>Dehydrated Garlic</li>
+      </ul>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📞 +91 9427753305</p>
+      <p>📧 drtrading@email.com</p>
+      <p>💬 WhatsApp Available 24/7</p>
+      <p>🕘 Mon – Sat | 9:00 AM – 7:00 PM (IST)</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER BOTTOM -->
+  <div class="footer-bottom">
+    <p class="footer-left-text">Design by:- <strong>Ajit Ahir</strong></p>
+    <p class="footer-credit">© 2026 D.R.Trading.  All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+
+
+
+
+</body>
+</html>
