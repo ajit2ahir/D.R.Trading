@@ -1074,6 +1074,39 @@
     font-size: 1rem;
   }
 }
+/* ===========================
+   MOBILE SLIDER HEIGHT FIX
+   =========================== */
+
+/* Force slider and images to fill frame */
+.slider {
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .frame {
+    width: 100%;
+    height: 240px;   /* FIXED mobile height */
+    overflow: hidden;
+    border-radius: 10px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .frame {
+    height: 200px;
+  }
+}
 
 
 
