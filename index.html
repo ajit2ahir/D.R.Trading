@@ -969,10 +969,7 @@
     font-size: 16px;
   }
 
-  /* MAIN OFFSET */
-  main {
-    margin-top: 130px;
-  }
+
 
   /* SLIDER */
   .previu {
@@ -1152,7 +1149,28 @@
     gap: 15px;
   }
 }
+/* ===== MOBILE HEADER GAP FIX ===== */
+@media (max-width: 768px) {
 
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  main {
+    padding-top: 120px; /* ✅ matches mobile header height */
+  }
+}
+
+/* SMALL PHONES */
+@media (max-width: 480px) {
+  main {
+    padding-top: 110px;
+  }
+}
+    
 
 
   </style>
