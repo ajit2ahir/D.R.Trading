@@ -1,3 +1,4 @@
+
 window.addEventListener('load', () => {
   const left = document.querySelector('.left');
   const right = document.querySelector('.right');
@@ -9,14 +10,13 @@ window.addEventListener('load', () => {
   let slideNumber = 0;
   const length = images.length;
 
-  /* ✅ ALWAYS use frame width (mobile safe) */
+  /* ===== RESPONSIVE WIDTH ===== */
   let slideWidth = frame.clientWidth;
 
   const updateWidth = () => {
     slideWidth = frame.clientWidth;
     slider.style.transform = `translateX(-${slideNumber * slideWidth}px)`;
   };
-
   window.addEventListener('resize', updateWidth);
 
   /* ===== DOT BUTTONS ===== */
@@ -39,6 +39,9 @@ window.addEventListener('load', () => {
       slider.style.transform = `translateX(-${slideWidth * slideNumber}px)`;
       updateDots();
     });
+
+    btn.addEventListener('mouseenter', stopAuto);
+    btn.addEventListener('mouseleave', startAuto);
   });
 
   updateDots();
@@ -62,17 +65,48 @@ window.addEventListener('load', () => {
   /* ===== AUTO SLIDE ===== */
   let interval = setInterval(nextSlide, 2500);
 
-  const stopAuto = () => clearInterval(interval);
-  const startAuto = () => interval = setInterval(nextSlide, 2500);
+  function stopAuto() {
+    clearInterval(interval);
+  }
 
-  /* DESKTOP HOVER */
-  slider.addEventListener('mouseenter', stopAuto);
-  slider.addEventListener('mouseleave', startAuto);
+  function startAuto() {
+    interval = setInterval(nextSlide, 2500);
+  }
 
-  /* MOBILE TOUCH SUPPORT */
-  slider.addEventListener('touchstart', stopAuto);
-  slider.addEventListener('touchend', startAuto);
+  /* ===== PAUSE ON HOVER ===== */
+  frame.addEventListener('mouseenter', stopAuto);
+  frame.addEventListener('mouseleave', startAuto);
+  left.addEventListener('mouseenter', stopAuto);
+  right.addEventListener('mouseenter', stopAuto);
+  left.addEventListener('mouseleave', startAuto);
+  right.addEventListener('mouseleave', startAuto);
+
+  /* ===== MOBILE SWIPE SUPPORT ===== */
+  let startX = 0;
+  let endX = 0;
+
+  frame.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    stopAuto();
+  }, { passive: true });
+
+  frame.addEventListener('touchmove', (e) => {
+    endX = e.touches[0].clientX;
+  }, { passive: true });
+
+  frame.addEventListener('touchend', () => {
+    const diff = startX - endX;
+    if (Math.abs(diff) > 50) {
+      diff > 0 ? nextSlide() : prevSlide();
+    }
+    startAuto();
+  });
+
 });
+
+
+
+
 
 
 
