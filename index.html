@@ -1194,6 +1194,20 @@ main {
     padding: 6px 10px;      /* makes buttons readable */
   }
 }
+/* ===== TABLET + LANDSCAPE TABLET MENU SPACING FIX ===== */
+@media (min-width: 769px) and (max-width: 1280px) {
+
+  nav ul {
+    gap: 26px;               /* clear spacing between menu items */
+    justify-content: center;
+    flex-wrap: wrap;         /* allows wrapping if needed */
+  }
+
+  nav ul li a {
+    font-size: 18px;
+    padding: 6px 12px;
+  }
+}
 
 
 
