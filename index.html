@@ -84,24 +84,27 @@ nav ul li a {
   font-weight: 900;
   font-size: 20px;
   position: relative;
-  padding: 6px 14px 6px; 
+  padding: 0 12px;   /* 🔥 horizontal spacing only */
+  line-height: 1.2;
   transition: color 0.3s ease;
 }
+
 
 
    nav ul li a::after {
   content: "";
   position: absolute;
-  left: 10%;
-  bottom: 0;
+  left: 12%;
+  bottom: -4px;     /* 🔥 prevents header height change */
   height: 3px;
-  width: 80%;              
+  width: 76%;
   background-color: gold;
   border-radius: 2px;
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.3s ease;
 }
+
 
 
     nav ul li a:hover {
