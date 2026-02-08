@@ -765,7 +765,14 @@ main {
   transition: all 1s ease;
   color: #fff;
 }
-
+/* 🔥 FORCE MAP VISIBLE ON TABLET */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .contact-info,
+  .contact-map {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 .contact-info h3 {
   font-size: 1.9rem;
   margin-bottom: 15px;
@@ -788,14 +795,7 @@ main {
   transform: translateX(80px) scale(0.9);
   transition: all 1s ease;
 }
-/* 🔥 FORCE MAP VISIBLE ON TABLET */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .contact-info,
-  .contact-map {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
+
 
 .contact-map {
   min-height: 380px;   
