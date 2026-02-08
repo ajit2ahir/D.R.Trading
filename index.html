@@ -710,12 +710,11 @@ main {
 /* ================= CONTACT SECTION ================= */
 
 .contact-section {
-  width: 100vw;
+  width: 100%;
   padding: 100px 20px;
   background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
   color: #ffffff;
-  overflow: hidden;
-  margin-left: calc(-50vw + 50%);
+  overflow: visible;
 }
 
 /* TITLE */
@@ -765,14 +764,7 @@ main {
   transition: all 1s ease;
   color: #fff;
 }
-/* 🔥 FORCE MAP VISIBLE ON TABLET */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .contact-info,
-  .contact-map {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
+
 .contact-info h3 {
   font-size: 1.9rem;
   margin-bottom: 15px;
@@ -1239,6 +1231,21 @@ main {
 
   .contact-map {
     min-height: 380px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .contact-wrapper {
+    flex-direction: column;
+  }
+
+  .contact-map {
+    width: 100%;
+    min-height: 380px;
+  }
+
+  .contact-map iframe {
+    width: 100%;
+    height: 380px;
   }
 }
 
