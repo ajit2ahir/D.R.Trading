@@ -1,4 +1,4 @@
-<!DOCTYPE html>
++<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -773,13 +773,23 @@ main {
 }
 
 /* MOBILE + TABLET */
+/* MOBILE + TABLET FIX */
 @media (max-width: 1024px) {
   .contact-wrapper {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stacks the info and map vertically */
+    gap: 30px;
   }
 
   .contact-map-box {
-    min-height: 300px;
+    min-height: 400px; /* Ensures the container has height on tablets */
+    width: 100%;
+    display: block;
+  }
+
+  .contact-map-box iframe {
+    height: 400px; /* Forces the iframe to take up space */
+    width: 100%;
+    border-radius: 18px;
   }
 }
 
@@ -1533,14 +1543,14 @@ Bring the perfect balance of heat, color, and aroma to your products with our Pr
     </div>
 
     <!-- MAP (NO ANIMATION EVER) -->
-    <div class="contact-map-box">
-      <iframe
-        src="https://www.google.com/maps?q=Ahmedabad%2C%20Gujarat&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen>
-      </iframe>
-    </div>
+   <div class="contact-map-box">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3714.471618684742!2d71.75440747594966!3d21.09920598583489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be23b004835b9eb%3A0xf5899ca98c48bd7f!2sD.R.Trading!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen>
+  </iframe>
+</div>
   </div>
 </section>
 
