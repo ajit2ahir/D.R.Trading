@@ -709,130 +709,85 @@ main {
 
 /* ================= CONTACT SECTION ================= */
 
+/* ================= CONTACT SECTION ================= */
+
 .contact-section {
   width: 100%;
-  padding: 100px 20px;
+  padding: 90px 20px;
   background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-  color: #ffffff;
+  color: #fff;
   overflow: visible;
 }
 
-/* TITLE */
 .contact-title {
   text-align: center;
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   margin-bottom: 50px;
-  color: #fff;
-  position: relative;
-  animation: goldGlow 2.2s ease-in-out infinite alternate;
+  color: #ffd700;
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
-@keyframes goldGlow {
-  0% {
-    text-shadow:
-      0 0 5px #ffd700,
-      0 0 10px #ffb700,
-      0 0 15px rgba(255, 215, 0, 0.6);
-  }
-  100% {
-    text-shadow:
-      0 0 15px #ffd700,
-      0 0 30px #ffae00,
-      0 0 45px rgba(255, 174, 0, 0.9);
-  }
+@keyframes glow {
+  from { text-shadow: 0 0 8px #ffd700; }
+  to { text-shadow: 0 0 20px #ffb700; }
 }
 
-/* WRAPPER */
 .contact-wrapper {
   max-width: 1100px;
   margin: auto;
   display: flex;
   gap: 40px;
   align-items: stretch;
-  position: relative;
-  z-index: 1;
 }
 
-/* INFO CARD */
+/* INFO */
 .contact-info {
   flex: 1;
-  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-  padding: 35px;
+  background: rgba(255,255,255,0.08);
+  padding: 30px;
   border-radius: 18px;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   opacity: 0;
-  transform: translateX(-80px) scale(0.9);
-  transition: all 1s ease;
-  color: #fff;
+  transform: translateX(-60px);
+  transition: 0.9s ease;
 }
 
-/* MAP CARD */
+/* MAP */
 .contact-map {
   flex: 1;
   min-height: 380px;
   border-radius: 18px;
   overflow: hidden;
-  position: relative;
-  background: transparent;
-  z-index: 5;
+  background: #000;
+  opacity: 0;
+  transform: translateX(60px);
+  transition: 0.9s ease;
 }
 
 .contact-map iframe {
   width: 100%;
   height: 100%;
   border: 0;
-  position: relative;
-  z-index: 6;
 }
 
-/* HOVER MAGIC */
-.contact-info:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(255,215,0,0.25);
-}
-
-.contact-map:hover iframe {
-  filter: grayscale(0%) contrast(120%);
-  transition: 0.5s;
-}
-
-/* SCROLL ACTIVE */
-.contact-section.active .contact-title {
-  opacity: 1;
-  transform: translateY(0);
-  transition: 0.8s ease;
-}
-
-.contact-section.active .contact-info {
-  opacity: 1;
-  transform: translateX(0) scale(1);
-}
-
+/* ACTIVE ANIMATION */
+.contact-section.active .contact-info,
 .contact-section.active .contact-map {
   opacity: 1;
-  transform: translateX(0) scale(1);
+  transform: translateX(0);
 }
 
-/* MOBILE + TABLET FIX */
+/* MOBILE + TABLET */
 @media (max-width: 1024px) {
   .contact-wrapper {
     flex-direction: column;
-  }
-
-  .contact-info,
-  .contact-map {
-    transform: translateY(40px) scale(0.95);
-  }
-
-  .contact-section.active .contact-info,
-  .contact-section.active .contact-map {
-    transform: translateY(0) scale(1);
   }
 
   .contact-map {
     min-height: 300px;
   }
 }
+
 
 
 
@@ -1210,30 +1165,7 @@ main {
     padding: 6px 12px;
   }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
-  .contact-wrapper {
-    align-items: stretch;
-  }
 
-  .contact-map {
-    min-height: 380px;
-  }
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-  .contact-wrapper {
-    flex-direction: column;
-  }
-
-  .contact-map {
-    width: 100%;
-    min-height: 380px;
-  }
-
-  .contact-map iframe {
-    width: 100%;
-    height: 380px;
-  }
-}
 
 
 
@@ -1594,67 +1526,30 @@ Bring the perfect balance of heat, color, and aroma to your products with our Pr
     
 
   
-<!-- CONTACT SECTION -->
-<section id="contact" class="contact-section reveal-contact">
+<section id="contact" class="contact-section">
   <h2 class="contact-title">Contact Us</h2>
 
   <div class="contact-wrapper">
-
-    <!-- LEFT INFO CARD -->
     <div class="contact-info">
       <h3>Let’s Trade Globally 🌍</h3>
-      <p>
-        Reach out to <strong>D.R. Trading</strong> for  inquiries,
-        bulk orders, or long-term partnerships.
-      </p>
-
-      <div class="contact-details">
-
-        <p>
-          <i class="fas fa-phone"></i>
-          <strong>Phone:</strong> +91 9427753305
-        </p>
-
-        <p>
-          <i class="fas fa-envelope"></i>
-          <strong>Email:</strong>
-          <a href="mailto:ahirajit10@gmail.com">drtrading@email.com</a>
-        </p>
-
-        <p>
-          <i class="fab fa-whatsapp"></i>
-          <strong>WhatsApp:</strong>
-          <a href="https://wa.me/919427753305" target="_blank">
-            +91 9427753305 - Available(24/7)
-          </a>
-        </p>
-
-        <p>
-          <i class="fas fa-clock"></i>
-          <strong>Business Hours:</strong>
-          Mon – Sat | 9:00 AM – 7:00 PM (IST)
-        </p>
-
-        <p>
-          <i class="fas fa-globe"></i>
-          <strong>International Buyers:</strong>
-          WhatsApp & Email available 24/7
-        </p>
-
-      </div>
+      <p>Reach out to D.R. Trading for inquiries, bulk orders, or long-term partnerships.</p>
+      <p>📞 Phone: +91 9427753305</p>
+      <p>✉️ Email: info@drtrading.in</p>
+      <p>💬 WhatsApp: +91 9427753305</p>
+      <p>🕘 Mon – Sat: 9:00 AM – 7:00 PM (IST)</p>
     </div>
 
-    <!-- RIGHT MAP CARD -->
     <div class="contact-map">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.335009343407!2d71.7569824!3d21.099206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be23b004835b9eb%3A0xf5899ca98c48bd7f!2sD.R.Trading!5e0!3m2!1sen!2sin!4v1767292776983!5m2!1sen!2sin"
-        allowfullscreen
-        loading="lazy">
+        src="https://www.google.com/maps?q=Ahmedabad%2C%20Gujarat&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
       </iframe>
     </div>
-
   </div>
 </section>
+
 
 
 
