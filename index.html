@@ -708,7 +708,6 @@ main {
 
 
 /* ================= CONTACT SECTION ================= */
-
 /* ================= CONTACT SECTION ================= */
 
 .contact-section {
@@ -719,6 +718,7 @@ main {
   overflow: visible;
 }
 
+/* TITLE */
 .contact-title {
   text-align: center;
   font-size: 2.5rem;
@@ -732,6 +732,7 @@ main {
   to { text-shadow: 0 0 20px #ffb700; }
 }
 
+/* LAYOUT */
 .contact-wrapper {
   max-width: 1100px;
   margin: auto;
@@ -747,35 +748,23 @@ main {
   padding: 30px;
   border-radius: 18px;
   backdrop-filter: blur(10px);
-  opacity: 0;
-  transform: translateX(-60px);
-  transition: 0.9s ease;
+  color: #fff;
 }
 
-/* MAP */
-.contact-map {
+/* MAP WRAPPER (animated) */
+.contact-map-wrapper {
   flex: 1;
   border-radius: 18px;
   overflow: hidden;
-  background: #000;
-  position: relative;
+}
+
+/* MAP (never animated) */
+.contact-map {
+  width: 100%;
+  height: 100%;
   min-height: 360px;
+  background: #000;
 }
-
-.map-responsive {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.map-responsive iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
 
 .contact-map iframe {
   width: 100%;
@@ -783,11 +772,16 @@ main {
   border: 0;
 }
 
-/* ACTIVE ANIMATION */
-.contact-section.active .contact-info,
-.contact-section.active .contact-map {
+/* ANIMATION */
+.animate-card {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.9s ease;
+}
+
+.contact-section.active .animate-card {
   opacity: 1;
- transform: none;
+  transform: translateY(0);
 }
 
 /* MOBILE + TABLET */
@@ -800,6 +794,7 @@ main {
     min-height: 300px;
   }
 }
+
 
 
 
@@ -1543,30 +1538,30 @@ Bring the perfect balance of heat, color, and aroma to your products with our Pr
 
     
 
-  
-<section id="contact" class="contact-section">
+  <section id="contact" class="contact-section">
   <h2 class="contact-title">Contact Us</h2>
 
   <div class="contact-wrapper">
-    <div class="contact-info">
+    <div class="contact-info animate-card">
       <h3>Let’s Trade Globally 🌍</h3>
       <p>Reach out to D.R. Trading for inquiries, bulk orders, or long-term partnerships.</p>
       <p>📞 Phone: +91 9427753305</p>
-      <p>✉️ Email: info@drtrading.in</p>
+      <p>✉️ Email: drtrading@gmail.com</p>
       <p>💬 WhatsApp: +91 9427753305</p>
       <p>🕘 Mon – Sat: 9:00 AM – 7:00 PM (IST)</p>
     </div>
 
-<div class="contact-map">
-  <div class="map-responsive">
-    <iframe
-      src="https://www.google.com/maps?q=Ahmedabad%2C%20Gujarat&output=embed"
-      loading="lazy"
-      allowfullscreen
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-</div>
+    <!-- IMPORTANT: map is NEVER animated -->
+    <div class="contact-map-wrapper animate-card">
+      <div class="contact-map">
+        <iframe
+          src="https://www.google.com/maps?q=Ahmedabad%2C%20Gujarat&output=embed"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
   </div>
 </section>
 
