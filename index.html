@@ -952,12 +952,11 @@ main {
 
 @media (max-width: 768px) {
 
-  /* HEADER */
   header {
     height: auto;
-    padding: 12px 15px;
+    padding: 10px 12px;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
   }
 
   .logo {
@@ -966,18 +965,23 @@ main {
   }
 
   .logo h1 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   nav ul {
-    gap: 10px;
-    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: nowrap;  
     justify-content: center;
+    gap: 12px;
   }
 
   nav ul li a {
-    font-size: 16px;
+    font-size: 14px;
+    padding: 4px 6px;
+    white-space: nowrap; 
   }
+}
+
 
 
 
