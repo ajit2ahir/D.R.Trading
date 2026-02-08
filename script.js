@@ -150,6 +150,7 @@ function toggleDesc(img) {
 /* ================= CONTACT SECTION ANIMATION ================= */
 
 const contactSection = document.querySelector('.contact-section');
+const contactInfo = document.querySelector('.contact-info');
 
 if ('IntersectionObserver' in window) {
   const contactObserver = new IntersectionObserver(entries => {
@@ -165,3 +166,4 @@ if ('IntersectionObserver' in window) {
 } else {
   contactSection.classList.add('active');
 }
+
