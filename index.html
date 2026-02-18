@@ -17,10 +17,11 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  overflow-x: hidden;
+}
 
     html {
       scroll-behavior: smooth;
@@ -552,8 +553,8 @@ main {
 
 /* ===== ABOUT SECTION ===== */
 .about-section {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  width: 100%;
+  margin-left: 0;
   padding: 90px 20px;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   color: white;
@@ -561,6 +562,7 @@ main {
   overflow: hidden;
   text-align: center;
 }
+
 
 /* Floating glow animation */
 .about-section::before {
