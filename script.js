@@ -147,23 +147,4 @@ function toggleDesc(img) {
 
 
 
-/* ================= CONTACT SECTION ANIMATION ================= */
-
-const contactSection = document.querySelector('.contact-section');
-const contactInfo = document.querySelector('.contact-info');
-
-if ('IntersectionObserver' in window) {
-  const contactObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        contactSection.classList.add('active');
-        contactObserver.disconnect();
-      }
-    });
-  }, { threshold: 0.3 });
-
-  contactObserver.observe(contactSection);
-} else {
-  contactSection.classList.add('active');
-}
 
