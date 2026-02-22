@@ -118,7 +118,7 @@ nav ul li a {
 
     /* ===== MAIN CONTENT ===== */
 main {
-  padding-top: 40px;   /* space for fixed header */
+  padding-top: 0px;   /* space for fixed header */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -164,12 +164,13 @@ main {
 
    .frame {
   width: 100%;        /* same as .previu width */
-  height: 70vh;
+  height: 100vh;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.5);
 }
     .slider {
+      height: 100%;
       display: flex;
       transition: all 1s ease;
     }
@@ -228,6 +229,7 @@ main {
 #home {
   padding-left: 0;
   padding-right: 0;
+  margin-top: 40px;
 }
 .text-wrapper {
   width: 100%;
