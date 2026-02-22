@@ -139,23 +139,28 @@ main {
   margin: 0 auto;       
 }
 
-      .top {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      width: 100%;
-    }
+     .top {
+  position: relative;
+  width: 100%;
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 2;
+}
 
-    .arrow {
-      cursor: pointer;
-      width: 60px;
-      height: 60px;
-    }
+.left {
+  left: 20px;
+  transform: translateY(-50%) rotate(180deg);
+}
 
-    .left {
-      transform: rotate(180deg);
-    }
+.right {
+  right: 20px;
+}
 
    .frame {
   width: 100%;        /* same as .previu width */
