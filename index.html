@@ -118,7 +118,7 @@ nav ul li a {
 
     /* ===== MAIN CONTENT ===== */
 main {
-  padding-top: 0px;   /* space for fixed header */
+  padding-top: 40px;   /* space for fixed header */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -164,7 +164,7 @@ main {
 
    .frame {
   width: 100%;        /* same as .previu width */
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.5);
@@ -227,14 +227,18 @@ main {
       line-height: 1.6;
     }
 #home {
-  padding-left: 0;
-  padding-right: 0;
-  margin-top: 40px;
+  position: relative;
+  height: 100vh;
+  padding: 0;
+  overflow: hidden;
 }
 .text-wrapper {
+  position: absolute;
+  top: 20px;
+  left: 0;
   width: 100%;
+  z-index: 3;
   overflow: hidden;
-  position: relative;
 }
 .moving-text {
    display: inline-block;
