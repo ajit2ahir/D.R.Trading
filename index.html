@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -1174,8 +1175,69 @@ main {
     padding: 6px 12px;
   }
 }
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
+.contact-link {
+  text-decoration: none;        /* remove blue underline */
+  color: #333;                  /* normal color */
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s ease;
+}
 
+.contact-link i {
+  font-size: 18px;
+  color: #0a7f3f;               /* green professional color */
+}
+
+.contact-link:hover {
+  color: #0a7f3f;
+  transform: translateX(5px);   /* smooth hover effect */
+}
+
+.contact-link:hover i {
+  color: #25D366;               /* WhatsApp green style */
+}
+
+.timing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #555;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .contact-wrapper {
+    flex-direction: column;
+  }
+
+  .contact-map-box iframe {
+    height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-link {
+    font-size: 14px;
+  }
+}
+.contact-section {
+  padding: 60px 20px;
+}
+
+.contact-wrapper {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 
 
 
@@ -1539,14 +1601,30 @@ Bring the perfect balance of heat, color, and aroma to your products with our Pr
   <h2 class="contact-title">Contact Us</h2>
 
   <div class="contact-wrapper">
-    <div class="contact-info">
-      <h3>Let’s Trade Globally 🌍</h3>
-      <p>Reach out to D.R. Trading for inquiries, bulk orders, or long-term partnerships.</p>
-      <p>📞 Phone: +91 9427753305</p>
-      <p>✉️ Email: info@drtrading.in</p>
-      <p>💬 WhatsApp: +91 9427753305</p>
-      <p>🕘 Mon – Sat: 9:00 AM – 7:00 PM (IST)</p>
-    </div>
+  <div class="contact-info">
+  <h3>Let’s Trade Globally 🌍</h3>
+  <p>Reach out to D.R. Trading for inquiries, bulk orders, or long-term partnerships.</p>
+
+  <a href="tel:+919427753305" class="contact-link">
+    <i class="fa-solid fa-phone"></i>
+    <span>+91 9427753305</span>
+  </a>
+
+  <a href="mailto:info@drtrading.in" class="contact-link">
+    <i class="fa-solid fa-envelope"></i>
+    <span>info@drtrading.in</span>
+  </a>
+
+  <a href="https://wa.me/919427753305" target="_blank" class="contact-link">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>Chat on WhatsApp</span>
+  </a>
+
+  <p class="timing">
+    <i class="fa-solid fa-clock"></i>
+    Mon – Sat: 9:00 AM – 7:00 PM (IST)
+  </p>
+</div>
 
     <!-- MAP (NO ANIMATION EVER) -->
    <div class="contact-map-box">
