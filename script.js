@@ -148,3 +148,29 @@ function toggleDesc(img) {
 
 
 
+
+
+
+document
+.getElementById("quoteForm")
+.addEventListener("submit", async function(e){
+
+  e.preventDefault();
+
+  const data = {
+    name: document.getElementById("name").value,
+    company: document.getElementById("company").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+    country: document.getElementById("country").value,
+    product: document.getElementById("product").value,
+    quantity: document.getElementById("quantity").value,
+    message: document.getElementById("message").value
+  };
+
+  console.log(data);
+
+  document.getElementById("successMessage").innerHTML =
+  "Thank you. We received your inquiry.";
+
+});
